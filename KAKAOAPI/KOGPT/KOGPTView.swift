@@ -19,11 +19,11 @@ struct KOGPTView: View {
             }) {
                 Text("Generate Text")
             }
-//            List(kogptAPI.kogptModel) { model in
-//                ForEach(model) { generation in
-//                    Text(generation.text)
-//                }
-//            }
+            List(kogptAPI.kogptModel, id:\.id) { model in
+                ForEach(model.generations, id: \.text) { generation in
+                    Text(generation.text)
+                }
+            }
         }
     }
 }

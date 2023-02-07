@@ -9,17 +9,17 @@ import SwiftUI
 
 struct KOGPTModel: Codable {
     let generations: [Generation]
-    //let id: String
-    let usage: Usage
+    let id: String
+    let usage: Usage //토큰관련인데.. 사실 쓸일이 있을지는 모르겠다.
     
-    init(usage: Usage, generations: Generation) {
-        //self.id = id
+    init(id: String, usage: Usage, generations: Generation) {
+        self.id = id
         self.usage = usage
         self.generations = [generations]
     }
     
     init () {
-//        self.id = ""
+        self.id = ""
         self.usage = Usage(totalTokens: 0, generatedTokens: 0, promptTokens: 0)
         self.generations = [Generation(text: "", tokens: 0)]
     }
