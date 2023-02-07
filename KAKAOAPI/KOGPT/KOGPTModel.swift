@@ -7,23 +7,19 @@
 
 import SwiftUI
 
-struct KOGPTAPIResponder: Codable {
-    var kogptdata:  KOGPTModel
-}
-
 struct KOGPTModel: Codable {
     let generations: [Generation]
-    let id: String
+    //let id: String
     let usage: Usage
     
-    init(id: String, usage: Usage, generations: Generation) {
-        self.id = id
+    init(usage: Usage, generations: Generation) {
+        //self.id = id
         self.usage = usage
         self.generations = [generations]
     }
     
     init () {
-        self.id = ""
+//        self.id = ""
         self.usage = Usage(totalTokens: 0, generatedTokens: 0, promptTokens: 0)
         self.generations = [Generation(text: "", tokens: 0)]
     }
@@ -31,15 +27,13 @@ struct KOGPTModel: Codable {
 }
 
 // MARK: - Generation
-struct Generation: Codable, Identifiable {
-    var id =  UUID()
+struct Generation: Codable {
     let text: String
     let tokens: Int
 }
 
 // MARK: - Usage
-struct Usage: Codable, Identifiable {
-    var id = UUID()
+struct Usage: Codable {
     let totalTokens, generatedTokens, promptTokens: Int
 
     enum CodingKeys: String, CodingKey {
@@ -49,48 +43,7 @@ struct Usage: Codable, Identifiable {
     }
 }
 
-
-/*
-struct KOGPTModel:  Decodable {
-//    var id = UUID()
-    let id: String
-//    let usage: Usage
-    let generations:  [Generations]
-    
-//    struct Usage: Decodable {
-//        let total_tokens: Int
-//        let generated_tokens: Int
-//        let prompt_tokens: Int
-//    }
-    
-    struct Generations:Decodable, Identifiable {
-        var id = UUID()
-        let text: String
-        let tokens: Int
-    }
-    
-//    private enum CodingKeys: String, CodingKey {
-//        case ids = "id"
-//        case usage, generations
-//    }
-    
-    //생성자를 생성하지 않고, 초기값도 주지 않는다면 @Published변수를 사용하는 라인에 Missing argument for parameter 'from' in call 에러발생
-    init(id: String, generations: Generations) {
-//        self.ids = ids
-        self.id = id
-//        self.usage = usage
-        self.generations = [generations]
-    }
-    
-    init () {
-        self.id = ""
-//        self.usage = Usage(total_tokens: 0, generated_tokens: 0, prompt_tokens: 0)
-        self.generations = [Generations(text: "", tokens: 0)]
-    }
 //    KOGPTModel(id: 0, usage: Usage(total_tokens: 0, generated_tokens: 0, prompt_tokens: 0), generations: Generations(text: "", tokens: 0))
-}
-*/
-
 /* 형태
  {
    "generations" : [
