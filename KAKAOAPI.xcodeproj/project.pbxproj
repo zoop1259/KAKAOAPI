@@ -26,6 +26,7 @@
 		C5AAB51C298E590A003C8997 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5AAB51B298E590A003C8997 /* Preview Assets.xcassets */; };
 		C5AAB523298E5A78003C8997 /* APIKEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AAB522298E5A78003C8997 /* APIKEY.swift */; };
 		C5AAB527298E5AC3003C8997 /* KOGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AAB526298E5AC3003C8997 /* KOGPTAPI.swift */; };
+		C5F4092729936D21001D5096 /* KarloAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F4092629936D21001D5096 /* KarloAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		C5AAB522298E5A78003C8997 /* APIKEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKEY.swift; sourceTree = "<group>"; };
 		C5AAB524298E5A92003C8997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C5AAB526298E5AC3003C8997 /* KOGPTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTAPI.swift; sourceTree = "<group>"; };
+		C5F4092629936D21001D5096 /* KarloAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarloAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +65,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C53D6B55298E9A8400298C41 /* KOGPT */ = {
-			isa = PBXGroup;
-			children = (
-				C5AAB526298E5AC3003C8997 /* KOGPTAPI.swift */,
-			);
-			path = KOGPT;
-			sourceTree = "<group>";
-		};
 		C5915C56299282BD00BE749A /* KOGPT */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +93,7 @@
 		C5AAB513298E5908003C8997 /* KAKAOAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C5915C56299282BD00BE749A /* KOGPT */,
+				C5F40924299349D0001D5096 /* AI */,
 				C5AAB525298E5AAC003C8997 /* Network */,
 				C5AAB524298E5A92003C8997 /* Info.plist */,
 				C5AAB514298E5908003C8997 /* KAKAOAPIApp.swift */,
@@ -121,10 +115,35 @@
 		C5AAB525298E5AAC003C8997 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				C53D6B55298E9A8400298C41 /* KOGPT */,
+				C5F4092529936CF1001D5096 /* AIAPI */,
 				C5AAB522298E5A78003C8997 /* APIKEY.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C5F40923299349AF001D5096 /* Karlo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Karlo;
+			sourceTree = "<group>";
+		};
+		C5F40924299349D0001D5096 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				C5F40923299349AF001D5096 /* Karlo */,
+				C5915C56299282BD00BE749A /* KOGPT */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		C5F4092529936CF1001D5096 /* AIAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C5AAB526298E5AC3003C8997 /* KOGPTAPI.swift */,
+				C5F4092629936D21001D5096 /* KarloAPI.swift */,
+			);
+			path = AIAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F4092729936D21001D5096 /* KarloAPI.swift in Sources */,
 				C5AAB527298E5AC3003C8997 /* KOGPTAPI.swift in Sources */,
 				C5915C5A2992841C00BE749A /* KOGPTModel.swift in Sources */,
 				C5AAB523298E5A78003C8997 /* APIKEY.swift in Sources */,
