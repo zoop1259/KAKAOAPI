@@ -51,6 +51,7 @@ func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, t
     }
 }
 
+
 class KOGPTAPI: ObservableObject {
     @Published var kogptModel = [KOGPTModel]()
     
