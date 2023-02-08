@@ -11,9 +11,9 @@ import SwiftUI
 struct KAKAOAPIApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            //KOGPTView()
-          KarloView()
+          ContentView()
+          //KOGPTView()
+          //KarloView()
         }
     }
 }
