@@ -19,7 +19,7 @@ struct ContentView: View {
             Text("Hello, world!")
             //let _ = print(kogpt_api(prompt: "안녕? 넌 누구야?"))
           let _ = print("아아 테스트테스트")
-          let _ = print(naverAPICall(text: "hi min"))
+          let _ = print(naverAPICall("hi DaeMin"))
           
         }
         .padding()
