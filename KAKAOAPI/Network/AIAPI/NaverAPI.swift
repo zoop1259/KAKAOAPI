@@ -27,8 +27,8 @@ func naverAPICall(_ text: String) {
                               "X-Naver-Client-Secret": clientSecret
   ]
   //나중에 toggle을 이용하여 변환할 param..
-  var params = ["source": "en",
-                "target": "ko",
+  var params = ["source": "ko",
+                "target": "en",
                 "text": text
   ]
 
