@@ -22,6 +22,46 @@ func APICalled <T: Decodable> (_ text: String, url: String, parameters: [String:
         }
 }
 
+enum APIError: Error {
+    case invalidURL
+    case responseError
+    case parseError
+}
+
+func APICallManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: String?) -> Void) {
+    guard let url = URL(string: url) else {
+      completion(nil, "URL 고장")
+        return
+    }
+
+  AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        .validate()
+        .responseJSON { response in
+          
+          print(url)
+          print(headers)
+          print(parameters)
+          print(response)
+          
+            guard response.error == nil else {
+                completion(nil, "응답 에러.")
+                return
+            }
+            
+            guard let data = response.data else {
+                completion(nil, "데이터 에러")
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(T.self, from: data)
+              completion(result, nil)
+            } catch {
+                completion(nil, "디코딩 오류")
+            }
+        }
+}
+
 /*
  func karlo_api(text: String, batchSize: Int = 1, completion: @escaping (UIImage?) -> Void) {
    let karloapi = KarloAPI()

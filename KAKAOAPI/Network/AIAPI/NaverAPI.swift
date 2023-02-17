@@ -26,15 +26,33 @@ func naverAPICall(_ text: String) {
                               "X-Naver-Client-Id": clientId,
                               "X-Naver-Client-Secret": clientSecret
   ]
+
   //나중에 toggle을 이용하여 변환할 param..
   var params = ["source": "ko",
                 "target": "en",
                 "text": text
   ]
 
+  APICallManager(url: url, parameters: params, headers: headers) { (data: Papago?, error) in
+    guard let data = data else {               // ↑ 타입 지정
+         print("error: \(error.debugDescription)")
+         return
+     }
+    
+    print(data)
+    
+  }
+  
+  
   AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
       .validate(statusCode: 200..<300)
       .responseDecodable(of: Papago.self) { response in
+        
+        print(url)
+        print(headers)
+        print(params)
+        print(response)
+        
         switch response.result {
         case .success(let value):
           let responseJson = JSON(value) //SwiftyJSON을 쓰지않으면 이걸 사용하지 못한다.

@@ -13,27 +13,28 @@ struct KOGPTView: View {
     
     var body: some View {
         NavigationView {
+          ScrollView {
             VStack(spacing: 20) {
-                TextField("Enter your prompt", text: $prompt)
-                    .padding([.leading, .trailing], 20)
-                Button(action: {
-                    self.kogptAPI.kogpt_api(prompt: self.prompt)
-                }) {
-                    Text("Generate Text")
-                }
+              TextField("Enter your prompt", text: $prompt, axis: .vertical)
                 .padding([.leading, .trailing], 20)
-                List(kogptAPI.kogptModel, id:\.id) { model in
-                    ForEach(model.generations, id: \.text) { generation in
-                        VStack {
-                            Text(generation.text)
-                            Text("Total Tokens: \(model.usage.totalTokens)")
-                        }
-                    }
+              Button(action: {
+                self.kogptAPI.kogpt_api(prompt: self.prompt)
+              }) {
+                Text("Generate Text")
+              }
+              .padding([.leading, .trailing], 20)
+              List(kogptAPI.kogptModel, id:\.id) { model in
+                ForEach(model.generations, id: \.text) { generation in
+                  VStack {
+                    Text(generation.text)
+                    Text("Total Tokens: \(model.usage.totalTokens)")
+                  }
                 }
+              }
             }
-            .navigationTitle("KOGPT")
-            
-            .navigationBarTitleDisplayMode(.inline)
+          }
+          .navigationTitle("KOGPT")
+          .navigationBarTitleDisplayMode(.inline)
         }
         
 //        .navigationBarTitle("KOGPT")

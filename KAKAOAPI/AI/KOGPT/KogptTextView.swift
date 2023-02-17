@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct KogptTextView: View {
-  @State private var isOptionViewPresented = false
+  @State private var kogptParamViewPresented = false
   @StateObject var kogptParam = KogptParam()
   
-  
   var body: some View {
-    NavigationView {
+    //NavigationView {
       VStack {
         Text("Prompt: \(kogptParam.prompt)")
         Text("Max Tokens: \(kogptParam.max_tokens)")
@@ -26,17 +25,32 @@ struct KogptTextView: View {
   //      }) {
   //        Text("메세지 생성하기")
   //      }
+        
       }
-      .navigationBarItems(trailing:
-                            Button(action: {
-        isOptionViewPresented = true
-      }) {
-        Image(systemName: "gear")
-      })
-      .sheet(isPresented: $isOptionViewPresented) {
-        KogptParamView(kogptParam: kogptParam)
+    //왜 preview에선 에러가 발생하는가.
+      .toolbar {
+          ToolbarItem(placement: .navigationBarTrailing) {
+              Button(action: {
+                kogptParamViewPresented = true
+              }) {
+                  Image(systemName: "gear")
+              }
+          }
       }
-    }
+      .sheet(isPresented: $kogptParamViewPresented) {
+        KogptParamView(kogptParam: kogptParam, isPresented: $kogptParamViewPresented)
+      }
+      
+//      .navigationBarItems(trailing:
+//                            Button(action: {
+//        isOptionViewPresented = true
+//      }) {
+//        Image(systemName: "gear")
+//      })
+//      .sheet(isPresented: $isOptionViewPresented) {
+//        KogptParamView(kogptParam: kogptParam)
+//      }
+   // }
   }
 }
 

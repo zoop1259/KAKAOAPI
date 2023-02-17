@@ -11,43 +11,78 @@ import SwiftUI
 import Alamofire
 
 struct ContentView: View {
-    
-    var body: some View {
-      NavigationView {
+  @State private var isShowingTextBubble = false
+  
+  
+  var body: some View {
+    NavigationView {
+      ZStack {
+        
+        let _ = print(naverAPICall("hi DaeMin"))
+        
         VStack {
-          //let _ = print(kogpt_api(prompt: "안녕? 넌 누구야?"))
-            let _ = print("아아 테스트테스트")
-            let _ = print(naverAPICall("안녕 대민"))
-           
-          HStack {
-            Image("KarloLogo")
-              .resizable()
-              .frame(width: 100, height: 100)
-  //              .overlay { // <-
-  //                Rectangle().stroke(.blue, lineWidth: 4)
-  //              }
-            
-            
+          NavigationLink(destination: KarloView()) {
+            HStack {
+              Image("KarloLogo")
+                .resizable()
+                .frame(width: 100, height: 100)
+              
+              Spacer()
+              
+              VStack(spacing: 10) {
+                Text("Karlo")
+                  .font(.largeTitle)
+                  .fontWeight(.bold)
+                  .foregroundColor(.white)
+                
+                Text("kakao brain으로 이미지 생성")
+                  .multilineTextAlignment(.trailing)
+                  .font(.footnote)
+                  .foregroundColor(.white)
+              }
+              
+              Spacer()
+            }
+            .padding(20)
+            .frame(maxWidth: .infinity)
+            .background(.blue)
           }
+          .cornerRadius(20)
+          .padding(30)
           
-          NavigationLink(destination: KOGPTView()) {
-            HStack(spacing: 20) {
+//          NavigationLink(destination: KOGPTView()) {
+          NavigationLink(destination: KogptTextView()) {
+            HStack {
               Image("KogptLogo")
                 .resizable()
                 .frame(width: 100, height: 100)
               
-              VStack {
-                Text("KOGPT")
+              Spacer()
+              
+              VStack(spacing: 10) {
+                Text("KoGPT")
+                  .font(.largeTitle)
+                  .fontWeight(.bold)
+                  .foregroundColor(.white)
+                
+                Text("kakao brain으로 text 생성")
+                  .multilineTextAlignment(.trailing)
+                  .font(.footnote)
                   .foregroundColor(.white)
               }
+              
+              Spacer()
             }
+            .padding(20)
+            .frame(maxWidth: .infinity)
             .background(.blue)
-            
           }
+          .cornerRadius(20)
+          .padding(30)
         }
-        //.padding()
       }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {

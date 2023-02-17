@@ -9,6 +9,8 @@ import SwiftUI
 
 struct KogptParamView: View {
   @ObservedObject var kogptParam: KogptParam
+  @Binding var isPresented: Bool
+  
   var body: some View {
       VStack {
 
@@ -30,16 +32,36 @@ struct KogptParamView: View {
           }
           Button(action: {
             // Do something
-            
+            isPresented = false
           }, label: {
               Text("Done")
           })
       }
       .onDisappear()
       .padding()
+    
+    /* 고려해볼 코드
+     //네비게이션링크엔 longpressgesture를 사용하기 어렵다.
+     //NavigationLink가 뷰를 변경하기 위해 이미 제스처 이벤트를 사용하기 때문
+     Text("longpressgesture 테스트용")
+       .gesture(LongPressGesture(minimumDuration: 0.5)
+         .onEnded { _ in
+           isShowingTextBubble = true
+         }
+       )
+     //.padding()
+     if isShowingTextBubble {
+       TextBubble(text: "안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안, \(isShowingTextBubble)")
+       let _ = print("눌렸다.")
+         .onTapGesture {
+           isShowingTextBubble = false
+         }
+         .onDisappear {
+           isShowingTextBubble = false
+         }
+     */
   }
 }
-
 
 //struct KogptParamView_Previews: PreviewProvider {
 //    static var previews: some View {

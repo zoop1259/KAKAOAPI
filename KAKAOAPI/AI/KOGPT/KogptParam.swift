@@ -8,7 +8,7 @@
 import Foundation
 
 class KogptParam: ObservableObject {
-    @Published var prompt: String = ""
+    @Published var prompt: String = "hi"
     @Published var max_tokens: Int = 10
     @Published var temperature: Double = 0.7
     @Published var top_p: Double = 1.0
