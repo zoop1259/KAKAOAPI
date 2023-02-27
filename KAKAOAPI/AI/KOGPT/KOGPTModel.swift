@@ -12,17 +12,17 @@ struct KOGPTModel: Codable {
     let id: String
     let usage: Usage //토큰관련인데.. 사실 쓸일이 있을지는 모르겠다.
     
-    init(id: String, usage: Usage, generations: Generation) {
-        self.id = id
-        self.usage = usage
-        self.generations = [generations]
-    }
-    
-    init () {
-        self.id = ""
-        self.usage = Usage(totalTokens: 0, generatedTokens: 0, promptTokens: 0)
-        self.generations = [Generation(text: "", tokens: 0)]
-    }
+//    init(id: String, usage: Usage, generations: Generation) {
+//        self.id = id
+//        self.usage = usage
+//        self.generations = [generations]
+//    }
+//
+//    init () {
+//        self.id = ""
+//        self.usage = Usage(totalTokens: 0, generatedTokens: 0, promptTokens: 0)
+//        self.generations = [Generation(text: "", tokens: 0)]
+//    }
     
 }
 

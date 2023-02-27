@@ -6,141 +6,71 @@
 //
 
 import SwiftUI
-import SwiftUITooltip
 
 struct KogptParamView: View {
     @ObservedObject var kogptParam: KogptParam
     @Binding var isPresented: Bool
-    
-    //Tooltip 변수
-    @State var isPresent = false
-    var tooltipSetting = DefaultTooltipConfig()
-    
     @State var maxTokens = Array(1...512)
     
     var body: some View {
-        Form {
-            Section {
-                Menu {
-                    ForEach(maxTokens.reversed(), id: \.self) { token in
-                        Button(action: {
-                            kogptParam.max_tokens = token
-                        }) {
-                            Text("\(token)")
+        NavigationView {
+            Form {
+                Section {
+                    HStack {
+                        Text("Max Tokens: ")
+                        Menu {
+                            ForEach(maxTokens.reversed(), id: \.self) { token in
+                                Button(action: {
+                                    kogptParam.max_tokens = token
+                                }) {
+                                    Text("\(token)")
+                                }
+                            }
+                        } label: {
+                            Text("\(kogptParam.max_tokens)")
+                                .fontWeight(.bold)
                         }
                     }
-                } label: {
-                    Text("Max Tokens : \(kogptParam.max_tokens)")
+                } footer: {
+                    Text("토큰 수 - 생설할 텍스트 길이 설정")
                 }
-            } footer: {
-                Text("토큰 수 - 생설할 텍스트 길이 설정")
-            }
-            
-            Section {
-                VStack {
-                    Text("Temperature: \(kogptParam.temperature)")
-                    Slider(value: $kogptParam.temperature, in: 0.0...1.0)
+                
+                Section {
+                    VStack {
+                        Text("Temperature: \(kogptParam.temperature)")
+                        Slider(value: $kogptParam.temperature, in: 0.0...1.0)
+                    }
+                } footer: {
+                    Text("온도 - 값이 높을수록 창의적인 결과 생성")
                 }
-            } footer: {
-                Text("온도 - 값이 높을수록 창의적인 결과 생성")
-            }
-            
-            Section {
-                VStack {
-                    Text("Top_p: \(kogptParam.top_p)")
-                    Slider(value: $kogptParam.top_p, in: 0.0...1.0)
+                
+                Section {
+                    VStack {
+                        Text("Top_p: \(kogptParam.top_p)")
+                        Slider(value: $kogptParam.top_p, in: 0.0...1.0)
+                    }
+                } footer: {
+                    Text("상위 확률 - 값이 높을수록 창의적인 결과 생성")
                 }
-            } footer: {
-                Text("상위 확률 - 값이 높을수록 창의적인 결과 생성")
-            }
-            
-            Section {
-                Stepper(value: $kogptParam.n, in: 1...16) {
-                    Text("N: \(kogptParam.n)")
+                
+                Section {
+                    Stepper(value: $kogptParam.n, in: 1...16) {
+                        Text("N: \(kogptParam.n)")
+                    }
+                } footer: {
+                    Text("수 - 생성할 결과 수 설정")
                 }
-            } footer: {
-                Text("수 - 생성할 결과 수 설정")
             }
-            
-            Section {
-                Button(action: {
-                    // Do something
-                    isPresented = false
-                }, label: {
-                    Text("Done")
-                })
-            }
+            .onDisappear()
+            .padding()
+            .navigationBarTitle("KoGPT 옵션 설정")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                isPresented = false
+            }) {
+                Image(systemName: "checkmark")
+            })
         }
-//        VStack {
-//
-//            Stepper(value: $kogptParam.max_tokens, in: 1...512) {
-//                Text("Max Tokens: \(kogptParam.max_tokens)")
-//            }
-//            .onTapGesture {
-//                self.isPresent = false
-//            }
-//            .onLongPressGesture {
-//                self.isPresent.toggle()
-//            }
-//            .tooltip(self.isPresent, config: tooltipSetting) {
-//                Text("생성할 글자의 수 조절")
-//            }
-//
-//
-//            VStack {
-//                Slider(value: $kogptParam.temperature, in: 0.0...1.0)
-//                Text("Temperature: \(kogptParam.temperature)")
-//                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
-//            }
-//            Text("Temperature: \(kogptParam.temperature)")
-//
-//            Slider(value: $kogptParam.top_p, in: 0.0...1.0) {
-//                Text("Top P: \(kogptParam.top_p)")
-//            }
-//
-//            Stepper(value: $kogptParam.n, in: 1...16) {
-//                Text("N: \(kogptParam.n)")
-//            }
-//            .onTapGesture {
-//                self.isPresent = false
-//            }
-//            .onLongPressGesture {
-//                self.isPresent.toggle()
-//            }
-//            .tooltip(self.isPresent, side: .top) {
-//                Text("생성할 개수.")
-//            }
-//
-//            Button(action: {
-//                // Do something
-//                isPresented = false
-//            }, label: {
-//                Text("Done")
-//            })
-//        }
-        .onDisappear()
-        .padding()
-        
-        /* 고려해볼 코드
-         //네비게이션링크엔 longpressgesture를 사용하기 어렵다.
-         //NavigationLink가 뷰를 변경하기 위해 이미 제스처 이벤트를 사용하기 때문
-         Text("longpressgesture 테스트용")
-         .gesture(LongPressGesture(minimumDuration: 0.5)
-         .onEnded { _ in
-         isShowingTextBubble = true
-         }
-         )
-         //.padding()
-         if isShowingTextBubble {
-         TextBubble(text: "안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안안녕안녕안, \(isShowingTextBubble)")
-         let _ = print("눌렸다.")
-         .onTapGesture {
-         isShowingTextBubble = false
-         }
-         .onDisappear {
-         isShowingTextBubble = false
-         }
-         */
     }
 }
 

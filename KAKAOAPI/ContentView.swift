@@ -50,8 +50,8 @@ struct ContentView: View {
                     .cornerRadius(20)
                     .padding(30)
                     
-                    //          NavigationLink(destination: KOGPTView()) {
-                    NavigationLink(destination: KogptTextView()) {
+                              NavigationLink(destination: KOGPTView()) {
+//                    NavigationLink(destination: KogptTextView()) {
                         HStack {
                             Image("KogptLogo")
                                 .resizable()

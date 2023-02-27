@@ -12,6 +12,6 @@ class KogptParam: ObservableObject {
     @Published var max_tokens: Int = 10
     @Published var temperature: Double = 0.7
     @Published var top_p: Double = 1.0
-    @Published var n: Int = 1
+    @Published var n: Int = 5
 }
 
