@@ -20,6 +20,6 @@ struct KarloModel: Codable {
 // MARK: - Image
 struct KarloImage: Codable {
     let id, image: String
-    let nsfw: Bool
+    let nsfw: Bool //부적절한 단어 포함이긴한데...
 }
 

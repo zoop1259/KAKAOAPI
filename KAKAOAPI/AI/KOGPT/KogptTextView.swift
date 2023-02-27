@@ -12,7 +12,7 @@ struct KogptTextView: View {
   @StateObject var kogptParam = KogptParam()
   
   var body: some View {
-    //NavigationView {
+    NavigationView {
       VStack {
         Text("Prompt: \(kogptParam.prompt)")
         Text("Max Tokens: \(kogptParam.max_tokens)")
@@ -39,6 +39,10 @@ struct KogptTextView: View {
       }
       .sheet(isPresented: $kogptParamViewPresented) {
         KogptParamView(kogptParam: kogptParam, isPresented: $kogptParamViewPresented)
+//          GeometryReader { proxy in
+//              KogptParamView(kogptParam: kogptParam, isPresented: $kogptParamViewPresented)
+//                  .frame(width: proxy.size.width, height: proxy.size.height)
+//          }
       }
       
 //      .navigationBarItems(trailing:
@@ -50,7 +54,7 @@ struct KogptTextView: View {
 //      .sheet(isPresented: $isOptionViewPresented) {
 //        KogptParamView(kogptParam: kogptParam)
 //      }
-   // }
+    }
   }
 }
 

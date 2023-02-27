@@ -9,28 +9,38 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-func APICalled <T: Decodable> (_ text: String, url: String, parameters: [String: Any], headers: [String: String], completion: @escaping (Swift.Result<T, AFError>) -> Void) {
-    AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: HTTPHeaders(headers))
-        .validate()
-        .responseDecodable(of: T.self) { response in
-            switch response.result {
-            case .success(let value):
-                completion(.success(value))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-}
-
 enum APIError: Error {
     case invalidURL
     case responseError
     case parseError
+    case decodeError
 }
 
-func APICallManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: String?) -> Void) {
+func APIManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: APIError?) -> Void) {
     guard let url = URL(string: url) else {
-      completion(nil, "URL 고장")
+        completion(nil, .invalidURL)
+        return
+    }
+    
+    AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        .validate()
+        .responseDecodable(of: T.self) { response in
+            switch response.result {
+            case .success(let value):
+                let responseJson = JSON(value) //SwiftyJSON을 쓰지않으면 이걸 사용하지 못한다.
+                print("받아받아.",responseJson)
+                completion(value, nil)
+            case .failure(let error):
+                print(error)
+                completion(nil, .decodeError)
+            }
+        }
+}
+
+//func APICallManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: String?) -> Void) {
+func APICallManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: APIError?) -> Void) {
+    guard let url = URL(string: url) else {
+        completion(nil, .invalidURL)
         return
     }
 
@@ -38,18 +48,18 @@ func APICallManager<T: Codable>(url: String, parameters: [String: String], heade
         .validate()
         .responseJSON { response in
           
-          print(url)
-          print(headers)
-          print(parameters)
-          print(response)
+//          print(url)
+//          print(headers)
+//          print(parameters)
+//          print(response)
           
             guard response.error == nil else {
-                completion(nil, "응답 에러.")
+                completion(nil, .responseError)
                 return
             }
             
             guard let data = response.data else {
-                completion(nil, "데이터 에러")
+                completion(nil, .parseError)
                 return
             }
             
@@ -57,12 +67,25 @@ func APICallManager<T: Codable>(url: String, parameters: [String: String], heade
                 let result = try JSONDecoder().decode(T.self, from: data)
               completion(result, nil)
             } catch {
-                completion(nil, "디코딩 오류")
+                completion(nil, .decodeError)
             }
         }
 }
 
 /*
+ func APICalled <T: Decodable> (_ text: String, url: String, parameters: [String: Any], headers: [String: String], completion: @escaping (Swift.Result<T, AFError>) -> Void) {
+     AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: HTTPHeaders(headers))
+         .validate()
+         .responseDecodable(of: T.self) { response in
+             switch response.result {
+             case .success(let value):
+                 completion(.success(value))
+             case .failure(let error):
+                 completion(.failure(error))
+             }
+         }
+ }
+ 
  func karlo_api(text: String, batchSize: Int = 1, completion: @escaping (UIImage?) -> Void) {
    let karloapi = KarloAPI()
    let karloModel = karloapi.karloModel

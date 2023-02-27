@@ -19,6 +19,9 @@
 		C517E641298F440C0048C920 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = C517E640298F440C0048C920 /* KakaoSDKUser */; };
 		C517E644298F44240048C920 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = C517E643298F44230048C920 /* SwiftyJSON */; };
 		C524C416299BF21D006BE5F8 /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C524C415299BF21D006BE5F8 /* TextBubble.swift */; };
+		C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C553D39A29A8BFF400664095 /* DotLoadingView.swift */; };
+		C55F82E029A704E900D440A4 /* imsitooltipview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55F82DF29A704E900D440A4 /* imsitooltipview.swift */; };
+		C55F82E329A7050D00D440A4 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = C55F82E229A7050D00D440A4 /* SwiftUITooltip */; };
 		C5915C58299282C900BE749A /* KOGPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5915C57299282C900BE749A /* KOGPTView.swift */; };
 		C5915C5A2992841C00BE749A /* KOGPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5915C592992841B00BE749A /* KOGPTModel.swift */; };
 		C5AAB515298E5908003C8997 /* KAKAOAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AAB514298E5908003C8997 /* KAKAOAPIApp.swift */; };
@@ -40,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		C524C415299BF21D006BE5F8 /* TextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubble.swift; sourceTree = "<group>"; };
+		C553D39A29A8BFF400664095 /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
+		C55F82DF29A704E900D440A4 /* imsitooltipview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imsitooltipview.swift; sourceTree = "<group>"; };
 		C5915C57299282C900BE749A /* KOGPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTView.swift; sourceTree = "<group>"; };
 		C5915C592992841B00BE749A /* KOGPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTModel.swift; sourceTree = "<group>"; };
 		C5AAB511298E5908003C8997 /* KAKAOAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KAKAOAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +75,7 @@
 				C517E63D298F440C0048C920 /* KakaoSDKTalk in Frameworks */,
 				C517E635298F440C0048C920 /* KakaoSDKCommonCore in Frameworks */,
 				C517E637298F440C0048C920 /* KakaoSDKNavi in Frameworks */,
+				C55F82E329A7050D00D440A4 /* SwiftUITooltip in Frameworks */,
 				C517E644298F44240048C920 /* SwiftyJSON in Frameworks */,
 				C517E63B298F440C0048C920 /* KakaoSDKStory in Frameworks */,
 				C517E63F298F440C0048C920 /* KakaoSDKTemplate in Frameworks */,
@@ -83,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C553D39C29A8C15D00664095 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C524C415299BF21D006BE5F8 /* TextBubble.swift */,
+				C55F82DF29A704E900D440A4 /* imsitooltipview.swift */,
+				C553D39A29A8BFF400664095 /* DotLoadingView.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		C5915C56299282BD00BE749A /* KOGPT */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +135,7 @@
 				C5AAB524298E5A92003C8997 /* Info.plist */,
 				C5AAB514298E5908003C8997 /* KAKAOAPIApp.swift */,
 				C5AAB516298E5908003C8997 /* ContentView.swift */,
-				C524C415299BF21D006BE5F8 /* TextBubble.swift */,
+				C553D39C29A8C15D00664095 /* Utility */,
 				C5AAB518298E590A003C8997 /* Assets.xcassets */,
 				C5AAB51A298E590A003C8997 /* Preview Content */,
 			);
@@ -210,6 +226,7 @@
 				C517E63E298F440C0048C920 /* KakaoSDKTemplate */,
 				C517E640298F440C0048C920 /* KakaoSDKUser */,
 				C517E643298F44230048C920 /* SwiftyJSON */,
+				C55F82E229A7050D00D440A4 /* SwiftUITooltip */,
 			);
 			productName = KAKAOAPI;
 			productReference = C5AAB511298E5908003C8997 /* KAKAOAPI.app */;
@@ -242,6 +259,7 @@
 			packageReferences = (
 				C517E62D298F440C0048C920 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				C517E642298F44230048C920 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				C55F82E129A7050D00D440A4 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
 			);
 			productRefGroup = C5AAB512298E5908003C8997 /* Products */;
 			projectDirPath = "";
@@ -278,11 +296,13 @@
 				C5B0F862299B8D3D0043EA51 /* KogptParamView.swift in Sources */,
 				C5915C5A2992841C00BE749A /* KOGPTModel.swift in Sources */,
 				C5B0F85E299B8C380043EA51 /* KogptParam.swift in Sources */,
+				C55F82E029A704E900D440A4 /* imsitooltipview.swift in Sources */,
 				C5AAB523298E5A78003C8997 /* APIKEY.swift in Sources */,
 				C5AAB517298E5908003C8997 /* ContentView.swift in Sources */,
 				C5F40929299376B2001D5096 /* KarloModel.swift in Sources */,
 				C524C416299BF21D006BE5F8 /* TextBubble.swift in Sources */,
 				C5915C58299282C900BE749A /* KOGPTView.swift in Sources */,
+				C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */,
 				C5AAB515298E5908003C8997 /* KAKAOAPIApp.swift in Sources */,
 				C5B2DC992993C23200D85291 /* NaverModel.swift in Sources */,
 			);
@@ -505,6 +525,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		C55F82E129A7050D00D440A4 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -562,6 +590,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C517E642298F44230048C920 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		C55F82E229A7050D00D440A4 /* SwiftUITooltip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C55F82E129A7050D00D440A4 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
+			productName = SwiftUITooltip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

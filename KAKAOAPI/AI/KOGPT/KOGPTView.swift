@@ -17,12 +17,14 @@ struct KOGPTView: View {
             VStack(spacing: 20) {
               TextField("Enter your prompt", text: $prompt, axis: .vertical)
                 .padding([.leading, .trailing], 20)
+                
               Button(action: {
                 self.kogptAPI.kogpt_api(prompt: self.prompt)
               }) {
                 Text("Generate Text")
               }
               .padding([.leading, .trailing], 20)
+                
               List(kogptAPI.kogptModel, id:\.id) { model in
                 ForEach(model.generations, id: \.text) { generation in
                   VStack {
