@@ -53,7 +53,7 @@ func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, t
 
 
 class KOGPTAPI: ObservableObject {
-    @Published var kogptModel = [KOGPTModel]()
+    @Published var kogptModel: [KOGPTModel] = [] 
     
     func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, top_p: Float = 1.0, n: Int = 1) {
         print("https://api.kakaobrain.com/v1/inference/kogpt/generation", prompt)
@@ -88,6 +88,7 @@ class KOGPTAPI: ObservableObject {
 //                let responseJson = JSON(value) //SwiftyJSON을 쓰지않으면 이걸 사용하지 못한다.
 //                print(responseJson)
                 self.kogptModel = [value]
+//                self.kogptModel.append(value)
                 print(self.kogptModel)
                 
             case .failure(let error):
