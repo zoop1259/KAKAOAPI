@@ -15,31 +15,19 @@ struct KOGPTView: View {
     @StateObject var kogptParam = KogptParam()
     
     var body: some View {
-        
-        //ScrollView {
+        Group {
+            
             List(kogptAPI.kogptModel, id:\.id) { model in
                 ForEach(model.generations, id: \.text) { generation in
                     VStack {
-                        Text(generation.text)
+                        Text("\(prompt)\(generation.text)")
                         Text("Total Tokens: \(model.usage.totalTokens)")
                     }
                 }
             }
-//            VStack(spacing: 20) {
-//                List(kogptAPI.kogptModel, id:\.id) { model in
-//                    ForEach(model.generations, id: \.text) { generation in
-//                        VStack {
-//                            Text(generation.text)
-//                            Text("Total Tokens: \(model.usage.totalTokens)")
-//                        }
-//                    }
-//                }
-//            }
-        //}
-        
-        Group {
+            
             HStack {
-                TextField("Enter your prompt", text: $prompt, axis: .vertical)
+                TextField("글을 입력해보세요.", text: $prompt, axis: .vertical)
                     .padding( .leading, 10)
                 Button(action: {
                     self.kogptAPI.kogpt_api(prompt: self.prompt)
@@ -48,6 +36,9 @@ struct KOGPTView: View {
                 }
             }
             .padding(.trailing, 20)
+            Text("token:\(kogptParam.max_tokens), temp:\(kogptParam.temperature), top:\(kogptParam.top_p), n:\(kogptParam.n)")
+                .font(.footnote)
+                .fontWeight(.ultraLight)
         }
         .frame(maxHeight: .infinity, alignment: .bottom)
         .navigationTitle("KOGPT")

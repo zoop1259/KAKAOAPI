@@ -18,7 +18,6 @@
 		C517E63F298F440C0048C920 /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = C517E63E298F440C0048C920 /* KakaoSDKTemplate */; };
 		C517E641298F440C0048C920 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = C517E640298F440C0048C920 /* KakaoSDKUser */; };
 		C517E644298F44240048C920 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = C517E643298F44230048C920 /* SwiftyJSON */; };
-		C524C416299BF21D006BE5F8 /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C524C415299BF21D006BE5F8 /* TextBubble.swift */; };
 		C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C553D39A29A8BFF400664095 /* DotLoadingView.swift */; };
 		C55F82E029A704E900D440A4 /* imsitooltipview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55F82DF29A704E900D440A4 /* imsitooltipview.swift */; };
 		C55F82E329A7050D00D440A4 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = C55F82E229A7050D00D440A4 /* SwiftUITooltip */; };
@@ -42,7 +41,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C524C415299BF21D006BE5F8 /* TextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubble.swift; sourceTree = "<group>"; };
 		C553D39A29A8BFF400664095 /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
 		C55F82DF29A704E900D440A4 /* imsitooltipview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imsitooltipview.swift; sourceTree = "<group>"; };
 		C5915C57299282C900BE749A /* KOGPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTView.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		C553D39C29A8C15D00664095 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				C524C415299BF21D006BE5F8 /* TextBubble.swift */,
 				C55F82DF29A704E900D440A4 /* imsitooltipview.swift */,
 				C553D39A29A8BFF400664095 /* DotLoadingView.swift */,
 			);
@@ -300,7 +297,6 @@
 				C5AAB523298E5A78003C8997 /* APIKEY.swift in Sources */,
 				C5AAB517298E5908003C8997 /* ContentView.swift in Sources */,
 				C5F40929299376B2001D5096 /* KarloModel.swift in Sources */,
-				C524C416299BF21D006BE5F8 /* TextBubble.swift in Sources */,
 				C5915C58299282C900BE749A /* KOGPTView.swift in Sources */,
 				C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */,
 				C5AAB515298E5908003C8997 /* KAKAOAPIApp.swift in Sources */,

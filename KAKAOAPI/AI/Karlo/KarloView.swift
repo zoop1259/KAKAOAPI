@@ -37,7 +37,9 @@ struct KarloView: View {
             .padding(.all, 10)
             //.frame(width: 200, height: 200, alignment: .center)
         } else {
-          Text("Loading...")
+//          Text("Loading...")
+            DotLoadingView()
+                .frame(width: 60, height: 30)
         }
       }
     }
