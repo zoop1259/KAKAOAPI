@@ -30,7 +30,7 @@ struct KOGPTView: View {
                 TextField("글을 입력해보세요.", text: $prompt, axis: .vertical)
                     .padding( .leading, 10)
                 Button(action: {
-                    self.kogptAPI.kogpt_api(prompt: self.prompt)
+                    kogptAPI.kogpt_api(prompt: prompt, max_tokens: kogptParam.max_tokens, temperature: kogptParam.temperature, top_p: kogptParam.top_p, n: kogptParam.n)
                 }) {
                     Image(systemName: "checkmark")
                 }
@@ -55,8 +55,8 @@ struct KOGPTView: View {
     }
 }
 
-struct KOGPTView_Previews: PreviewProvider {
-    static var previews: some View {
-        KOGPTView()
-    }
-}
+//struct KOGPTView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        KOGPTView()
+//    }
+//}

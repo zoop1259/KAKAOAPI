@@ -53,9 +53,11 @@ func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, t
 
 
 class KOGPTAPI: ObservableObject {
-    @Published var kogptModel: [KOGPTModel] = [] 
+    @Published var kogptModel: [KOGPTModel] = []
     
-    func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, top_p: Float = 1.0, n: Int = 5) {
+    
+//    func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, top_p: Float = 1.0, n: Int = 5) {
+    func kogpt_api(prompt: String, max_tokens: Int, temperature: Double, top_p: Double, n: Int) {
         print("https://api.kakaobrain.com/v1/inference/kogpt/generation", prompt)
         
         let apiKey = Bundle.main.apiKey
