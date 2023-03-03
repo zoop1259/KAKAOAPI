@@ -11,6 +11,7 @@ struct KarloView: View {
     @ObservedObject var karloAPI = KarloAPI()
     @State private var inputText: String = ""
     @State private var showImage: Bool = false
+    @State private var popupPresented: Bool = false
     
     var body: some View {
         //자동줄바꿈은 axis: .vertical을 쓰면된다...
@@ -50,6 +51,16 @@ struct KarloView: View {
                         .frame(width: 60, height: 30)
                 }
             }
+        }
+        .navigationTitle("Karlo")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            popupPresented = true
+        }) {
+            Image(systemName: "gear")
+        })
+        if popupPresented {
+            KarloParamView(karloParam: KarloParam(), popupViewPresented: $popupPresented)
         }
     }
 }

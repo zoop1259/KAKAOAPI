@@ -24,6 +24,7 @@ import SwiftUI
 
 class KarloAPI: ObservableObject {
     @Published var image: UIImage?
+    @ObservedObject private var karloParam = KarloParam()
     
     func karlo_api(text: String, batchSize: Int = 1, completion: @escaping (UIImage?) -> Void) {
 
@@ -61,13 +62,23 @@ class KarloAPI: ObservableObject {
         }
     }
     
-    func fetchImage(text: String) {
-        naverAPICall(text) { str in
-            self.karlo_api(text: str) { image in
+    func fetchImage(text: String, transalte: Bool = true) {
+        if karloParam.translate {
+            naverAPICall(text) { str in
+                self.karlo_api(text: str) { image in
+                    DispatchQueue.main.async {
+                        self.image = image
+                    }
+                }
+            }
+        } else {
+            self.karlo_api(text: text) { image in
                 DispatchQueue.main.async {
                     self.image = image
                 }
             }
         }
+        
+
     }
 }

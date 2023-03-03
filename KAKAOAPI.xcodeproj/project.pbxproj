@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5107CFB29B1916D0062B210 /* KarloParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5107CFA29B1916D0062B210 /* KarloParam.swift */; };
 		C517E62F298F440C0048C920 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = C517E62E298F440C0048C920 /* KakaoSDK */; };
 		C517E631298F440C0048C920 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C517E630298F440C0048C920 /* KakaoSDKAuth */; };
 		C517E633298F440C0048C920 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = C517E632298F440C0048C920 /* KakaoSDKCommon */; };
@@ -29,10 +30,10 @@
 		C5AAB51C298E590A003C8997 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5AAB51B298E590A003C8997 /* Preview Assets.xcassets */; };
 		C5AAB523298E5A78003C8997 /* APIKEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AAB522298E5A78003C8997 /* APIKEY.swift */; };
 		C5AAB527298E5AC3003C8997 /* KOGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AAB526298E5AC3003C8997 /* KOGPTAPI.swift */; };
+		C5B05F7A29AF755E009B21B4 /* KarloParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B05F7929AF755E009B21B4 /* KarloParamView.swift */; };
 		C5B0F859299A81340043EA51 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0F858299A81340043EA51 /* NaverAPI.swift */; };
 		C5B0F85C299B6FD70043EA51 /* APIGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0F85B299B6FD70043EA51 /* APIGeneric.swift */; };
 		C5B0F85E299B8C380043EA51 /* KogptParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0F85D299B8C380043EA51 /* KogptParam.swift */; };
-		C5B0F860299B8D310043EA51 /* KogptTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0F85F299B8D310043EA51 /* KogptTextView.swift */; };
 		C5B0F862299B8D3D0043EA51 /* KogptParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0F861299B8D3D0043EA51 /* KogptParamView.swift */; };
 		C5B2DC992993C23200D85291 /* NaverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2DC982993C23200D85291 /* NaverModel.swift */; };
 		C5F4092729936D21001D5096 /* KarloAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F4092629936D21001D5096 /* KarloAPI.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5107CFA29B1916D0062B210 /* KarloParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarloParam.swift; sourceTree = "<group>"; };
 		C553D39A29A8BFF400664095 /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
 		C55F82DF29A704E900D440A4 /* imsitooltipview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imsitooltipview.swift; sourceTree = "<group>"; };
 		C5915C57299282C900BE749A /* KOGPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTView.swift; sourceTree = "<group>"; };
@@ -53,10 +55,10 @@
 		C5AAB522298E5A78003C8997 /* APIKEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKEY.swift; sourceTree = "<group>"; };
 		C5AAB524298E5A92003C8997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C5AAB526298E5AC3003C8997 /* KOGPTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTAPI.swift; sourceTree = "<group>"; };
+		C5B05F7929AF755E009B21B4 /* KarloParamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarloParamView.swift; sourceTree = "<group>"; };
 		C5B0F858299A81340043EA51 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
 		C5B0F85B299B6FD70043EA51 /* APIGeneric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGeneric.swift; sourceTree = "<group>"; };
 		C5B0F85D299B8C380043EA51 /* KogptParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogptParam.swift; sourceTree = "<group>"; };
-		C5B0F85F299B8D310043EA51 /* KogptTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogptTextView.swift; sourceTree = "<group>"; };
 		C5B0F861299B8D3D0043EA51 /* KogptParamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogptParamView.swift; sourceTree = "<group>"; };
 		C5B2DC982993C23200D85291 /* NaverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverModel.swift; sourceTree = "<group>"; };
 		C5F4092629936D21001D5096 /* KarloAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarloAPI.swift; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 				C5915C57299282C900BE749A /* KOGPTView.swift */,
 				C5915C592992841B00BE749A /* KOGPTModel.swift */,
 				C5B0F85D299B8C380043EA51 /* KogptParam.swift */,
-				C5B0F85F299B8D310043EA51 /* KogptTextView.swift */,
 				C5B0F861299B8D3D0043EA51 /* KogptParamView.swift */,
 			);
 			path = KOGPT;
@@ -170,6 +171,8 @@
 			children = (
 				C5F4092A299379CB001D5096 /* KarloView.swift */,
 				C5F40928299376B2001D5096 /* KarloModel.swift */,
+				C5B05F7929AF755E009B21B4 /* KarloParamView.swift */,
+				C5107CFA29B1916D0062B210 /* KarloParam.swift */,
 			);
 			path = Karlo;
 			sourceTree = "<group>";
@@ -287,7 +290,7 @@
 				C5F4092729936D21001D5096 /* KarloAPI.swift in Sources */,
 				C5F4092B299379CB001D5096 /* KarloView.swift in Sources */,
 				C5B0F85C299B6FD70043EA51 /* APIGeneric.swift in Sources */,
-				C5B0F860299B8D310043EA51 /* KogptTextView.swift in Sources */,
+				C5107CFB29B1916D0062B210 /* KarloParam.swift in Sources */,
 				C5AAB527298E5AC3003C8997 /* KOGPTAPI.swift in Sources */,
 				C5B0F859299A81340043EA51 /* NaverAPI.swift in Sources */,
 				C5B0F862299B8D3D0043EA51 /* KogptParamView.swift in Sources */,
@@ -298,6 +301,7 @@
 				C5AAB517298E5908003C8997 /* ContentView.swift in Sources */,
 				C5F40929299376B2001D5096 /* KarloModel.swift in Sources */,
 				C5915C58299282C900BE749A /* KOGPTView.swift in Sources */,
+				C5B05F7A29AF755E009B21B4 /* KarloParamView.swift in Sources */,
 				C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */,
 				C5AAB515298E5908003C8997 /* KAKAOAPIApp.swift in Sources */,
 				C5B2DC992993C23200D85291 /* NaverModel.swift in Sources */,
