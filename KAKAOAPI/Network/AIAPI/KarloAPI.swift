@@ -9,62 +9,65 @@ import Alamofire
 import SwiftyJSON
 import SwiftUI
 
-//이건 escaping을 사용해보자.
-func karlo_api(text: String, batchSize: Int = 1, completion: @escaping (UIImage?) -> Void) {
-    let karloapi = KarloAPI()
-    let karloModel = karloapi.karloModel
+///KarloAPI 호출부분입니다.
+/**
+ 
+ - karlo_api
+ 
+ 입력받은 text를 통해 이미지를 번역합니다.
+ 
+ - fetchImage는
+ 
+ 입력받은 text를 PapagoAPI를 통해 번역을 하고 번역한 값을 통해 karlo_api 메서드를 사용하여 image를 생성합니다.
+ 
+ */
+
+class KarloAPI: ObservableObject {
+    @Published var image: UIImage?
     
-    let apiKey = Bundle.main.apiKey
-    
-    let headers: HTTPHeaders = [
-        "Authorization": "KakaoAK \(apiKey)",
-        "Content-Type": "application/json"
-    ]
-    
-    let parameters: [String: Any] = [
-        "prompt": [
-            "text": text,
-            "batch_size": batchSize
+    func karlo_api(text: String, batchSize: Int = 1, completion: @escaping (UIImage?) -> Void) {
+
+        let apiKey = Bundle.main.apiKey
+        
+        let url = "https://api.kakaobrain.com/v1/inference/karlo/t2i"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "KakaoAK \(apiKey)",
+            "Content-Type": "application/json"
         ]
-    ]
-    
-    AF.request("https://api.kakaobrain.com/v1/inference/karlo/t2i",
-               method: .post,
-               parameters: parameters,
-               encoding: JSONEncoding.default,
-               headers: headers)
-    .validate() //이게 허용범위를 정하기 위한것. .validate(200.<300) // 200~300사이 상태 코드만 허용.
-    //    .responseJSON { response in
-    .responseDecodable(of: JSON.self) { response in
-        switch response.result {
-        case .success(let value):
-            let json = JSON(value)
-            
-            
-            print(json)
-            let base64Image = json["images"][0]["image"].stringValue
-            if let data = Data(base64Encoded: base64Image, options: .ignoreUnknownCharacters) {
-                completion(UIImage(data: data))
-            } else {
+        
+        let parameters: [String:Any] = [
+            "prompt": [
+                "text": text,
+                "batch_size": batchSize
+            ]
+        ]
+        
+        requestAndValidateJSON(url, parameters: parameters, headers: headers) { (result: AFResult<KarloModel>) in
+            print("성공이냐")
+            switch result {
+            case .success(let data):
+                let base64Image = data.images[0].image
+                if let data = Data(base64Encoded: base64Image, options: .ignoreUnknownCharacters) {
+                    completion(UIImage(data: data))
+                } else {
+                    completion(nil)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
                 completion(nil)
             }
-        case .failure(let error):
-            print(error)
-            completion(nil)
+            
         }
     }
-}
-
-//MARK: - 이게 모델인지 뷰모델인지?
-class KarloAPI: ObservableObject {
-  @Published var image: UIImage?
-  @Published var karloModel = [KOGPTModel]()
-  
-  func fetchImage(text: String) {
-    karlo_api(text: text) { image in
-      DispatchQueue.main.async {
-        self.image = image
-      }
+    
+    func fetchImage(text: String) {
+        naverAPICall(text) { str in
+            self.karlo_api(text: str) { image in
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }
+        }
     }
-  }
 }

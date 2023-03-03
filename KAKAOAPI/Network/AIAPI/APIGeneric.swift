@@ -16,7 +16,7 @@ enum APIError: Error {
     case decodeError
 }
 
-func APIManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: APIError?) -> Void) {
+func APIManager<T: Codable>(url: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (_ data: T?, _ error: APIError?) -> Void) {
     guard let url = URL(string: url) else {
         completion(nil, .invalidURL)
         return
@@ -31,14 +31,18 @@ func APIManager<T: Codable>(url: String, parameters: [String: String], headers: 
                 print("받아받아.",responseJson)
                 completion(value, nil)
             case .failure(let error):
-                print(error)
+                if let data = response.data,
+                   let responseJson = try? JSON(data: data) {
+                    print("JSON response:", responseJson)
+                }
+                print("AF error:", error)
                 completion(nil, .decodeError)
             }
         }
 }
 
 //func APICallManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: String?) -> Void) {
-func APICallManager<T: Codable>(url: String, parameters: [String: String], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: APIError?) -> Void) {
+func APICallManager<T: Codable>(url: String, parameters: [String: Any], headers: HTTPHeaders, completion: @escaping (_ data: T?, _ error: APIError?) -> Void) {
     guard let url = URL(string: url) else {
         completion(nil, .invalidURL)
         return
@@ -71,6 +75,40 @@ func APICallManager<T: Codable>(url: String, parameters: [String: String], heade
             }
         }
 }
+
+func requestAndValidateJSON<T: Decodable>(_ url: String,
+                                          method: HTTPMethod = .post,
+                                          parameters: Parameters? = nil,
+                                          headers: HTTPHeaders? = nil,
+                                          decoder: JSONDecoder = JSONDecoder(),
+                                          completion: @escaping (AFResult<T>) -> Void) {
+
+    AF.request(url,
+               method: method,
+               parameters: parameters,
+               encoding: JSONEncoding.default,
+               headers: headers)
+        .validate()
+//        .responseJSON { response in
+        .responseDecodable(of: T.self, decoder: decoder, completionHandler: { response in
+            switch response.result {
+            case .success:
+                if let data = response.data {
+                    do {
+                        let decodedData = try decoder.decode(T.self, from: data)
+                        completion(.success(decodedData))
+                    } catch {
+                        completion(.failure(AFError.responseSerializationFailed(reason: .decodingFailed(error: error))))
+                    }
+                } else {
+                    completion(.failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)))
+                }
+            case .failure:
+                completion(.failure(AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: response.response?.statusCode ?? 400))))
+            }
+        })
+}
+
 
 /*
  func APICalled <T: Decodable> (_ text: String, url: String, parameters: [String: Any], headers: [String: String], completion: @escaping (Swift.Result<T, AFError>) -> Void) {
