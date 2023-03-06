@@ -12,6 +12,9 @@ struct KarloView: View {
     @State private var inputText: String = ""
     @State private var showImage: Bool = false
     @State private var popupPresented: Bool = false
+    //StateObject를 사용하지 않으면 toggle을 false한상태에서 다시 뷰를 호출하면 true로 되어버림.
+    @StateObject var karloParam = KarloParam()
+    
     
     var body: some View {
         //자동줄바꿈은 axis: .vertical을 쓰면된다...
@@ -51,16 +54,21 @@ struct KarloView: View {
                         .frame(width: 60, height: 30)
                 }
             }
+            
+            
         }
         .navigationTitle("Karlo")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
-            popupPresented = true
+            popupPresented.toggle()
         }) {
             Image(systemName: "gear")
         })
         if popupPresented {
-            KarloParamView(karloParam: KarloParam(), popupViewPresented: $popupPresented)
+//            KarloParamView(karloParam: KarloParam(), popupViewPresented: $popupPresented)
+            //StateOjbect를 사용한 값을 넣어줘야함. 위처럼 사용하면 안됨.
+            KarloParamView(karloParam: karloParam, popupViewPresented: $popupPresented)
+
         }
     }
 }

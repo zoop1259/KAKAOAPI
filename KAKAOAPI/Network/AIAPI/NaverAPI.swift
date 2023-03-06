@@ -17,7 +17,7 @@ import SwiftyJSON
  -d "source=ko&target=en&text=만나서 반갑습니다." -v
  */
 
-func naverAPICall(_ text: String) {
+func naverAPICall(_ text: String, completion: @escaping (String) -> Void) {
     let clientId = Bundle.main.naverKey
     let clientSecret = Bundle.main.naverSecretKey
     
@@ -27,8 +27,7 @@ func naverAPICall(_ text: String) {
                                 "X-Naver-Client-Secret": clientSecret
     ]
     
-    //나중에 toggle을 이용하여 변환할 param..
-    var params = ["source": "ko",
+    let params = ["source": "ko",
                   "target": "en",
                   "text": text
     ]
@@ -36,45 +35,12 @@ func naverAPICall(_ text: String) {
     APIManager(url: url, parameters: params, headers: headers) { (data: Papago?, error) in
         guard let data = data else {               // ↑ 타입 지정
             print("error: \(error.debugDescription)")
-            print("에러: ")
             return
         }
-        
-        print(data)
-        print("manage 통해 받아온 데이터값 : \(data.message.result.translatedText)")
+        completion(data.message.result.translatedText)
+        print("번역 문장 : \(data.message.result.translatedText)")
     }
     
-    APICallManager(url: url, parameters: params, headers: headers) { (data: Papago?, error) in
-        guard let data = data else {               // ↑ 타입 지정
-            print("error: \(error.debugDescription)")
-            print("에러: ")
-            return
-        }
-        
-        //print(data)
-        print("매니저를 통해 받아온 데이터값 : \(data.message.result.translatedText)")
-        
-    }
-    
-    AF.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
-        .validate(statusCode: 200..<300)
-        .responseDecodable(of: Papago.self) { response in
-            
-            print(url)
-            print(headers)
-            print(params)
-            print(response)
-            
-            switch response.result {
-            case .success(let value):
-                let responseJson = JSON(value) //SwiftyJSON을 쓰지않으면 이걸 사용하지 못한다.
-                //print(responseJson)
-                print(value.message.result.translatedText)
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
     /* 단순히 응답만 받기.
      .responseString { response in
      switch response.result {
@@ -85,8 +51,5 @@ func naverAPICall(_ text: String) {
      }
      }
      */
-    
-    
-    
 }
 

@@ -14,7 +14,6 @@ struct KAKAOAPIApp: App {
           ContentView()
 //          KOGPTView()
           //KarloView()
-//          KogptTextView()
         }
     }
 }

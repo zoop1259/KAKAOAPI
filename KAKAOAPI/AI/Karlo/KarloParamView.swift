@@ -15,7 +15,6 @@ struct KarloParamView: View {
         ZStack {
             Color.white
             VStack {
-
                 Text("번역 여부 설정")
                     .font(.title)
                 Toggle(isOn: $karloParam.translate) {

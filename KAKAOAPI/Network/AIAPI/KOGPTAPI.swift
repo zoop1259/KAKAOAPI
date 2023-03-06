@@ -18,38 +18,38 @@ import SwiftyJSON
  n           : Integer : 생성할 결과 수 1~16 (기본값 1)
  
  */
-func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, top_p: Float = 1.0, n: Int = 5) {
-    
-    let apiKey = Bundle.main.apiKey
-    
-    let parameters:[String: Any] = [
-        "prompt": prompt,
-        "max_tokens": max_tokens,
-        "temperature": temperature,
-        "top_p": top_p,
-        "n": n
-    ]
-    
-    let headers: HTTPHeaders = [
-        "Authorization": "KakaoAK " + apiKey,
-        "Content-Type": "application/json"
-    ]
-    
-    AF.request("https://api.kakaobrain.com/v1/inference/kogpt/generation",
-               method: .post,
-               parameters: parameters,
-               encoding: JSONEncoding.default,
-               //headers: headers).responseJSON { response in //'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
-               headers: headers).responseDecodable(of: JSON.self) { response in
-        switch response.result {
-        case .success(let value):
-            let responseJson = JSON(value) //SwiftyJSON을 쓰지않으면 이걸 사용하지 못한다.
-            print(responseJson)
-        case .failure(let error):
-            print(error)
-        }
-    }
-}
+//func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, top_p: Float = 1.0, n: Int = 5) {
+//    
+//    let apiKey = Bundle.main.apiKey
+//    
+//    let parameters:[String: Any] = [
+//        "prompt": prompt,
+//        "max_tokens": max_tokens,
+//        "temperature": temperature,
+//        "top_p": top_p,
+//        "n": n
+//    ]
+//    
+//    let headers: HTTPHeaders = [
+//        "Authorization": "KakaoAK " + apiKey,
+//        "Content-Type": "application/json"
+//    ]
+//    
+//    AF.request("https://api.kakaobrain.com/v1/inference/kogpt/generation",
+//               method: .post,
+//               parameters: parameters,
+//               encoding: JSONEncoding.default,
+//               //headers: headers).responseJSON { response in //'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
+//               headers: headers).responseDecodable(of: JSON.self) { response in
+//        switch response.result {
+//        case .success(let value):
+//            let responseJson = JSON(value) //SwiftyJSON을 쓰지않으면 이걸 사용하지 못한다.
+//            print(responseJson)
+//        case .failure(let error):
+//            print(error)
+//        }
+//    }
+//}
 
 
 class KOGPTAPI: ObservableObject {
@@ -74,6 +74,8 @@ class KOGPTAPI: ObservableObject {
             "Authorization": "KakaoAK " + apiKey,
             "Content-Type": "application/json"
         ]
+        
+    
         
         AF.request("https://api.kakaobrain.com/v1/inference/kogpt/generation",
                    method: .post,

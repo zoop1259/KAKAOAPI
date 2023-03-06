@@ -13,13 +13,9 @@ import Alamofire
 struct ContentView: View {
     @State private var isShowingTextBubble = false
     
-    
     var body: some View {
         NavigationView {
             ZStack {
-                
-                let _ = print(naverAPICall("hi DaeMin"))
-                
                 VStack {
                     NavigationLink(destination: KarloView()) {
                         HStack {
@@ -51,7 +47,6 @@ struct ContentView: View {
                     .padding(30)
                     
                               NavigationLink(destination: KOGPTView()) {
-//                    NavigationLink(destination: KogptTextView()) {
                         HStack {
                             Image("KogptLogo")
                                 .resizable()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C5107CFB29B1916D0062B210 /* KarloParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5107CFA29B1916D0062B210 /* KarloParam.swift */; };
+		C5107D0329B5E3800062B210 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5107D0229B5E3800062B210 /* DrawingView.swift */; };
 		C517E62F298F440C0048C920 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = C517E62E298F440C0048C920 /* KakaoSDK */; };
 		C517E631298F440C0048C920 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C517E630298F440C0048C920 /* KakaoSDKAuth */; };
 		C517E633298F440C0048C920 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = C517E632298F440C0048C920 /* KakaoSDKCommon */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		C5107CFA29B1916D0062B210 /* KarloParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarloParam.swift; sourceTree = "<group>"; };
+		C5107D0229B5E3800062B210 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		C553D39A29A8BFF400664095 /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
 		C55F82DF29A704E900D440A4 /* imsitooltipview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imsitooltipview.swift; sourceTree = "<group>"; };
 		C5915C57299282C900BE749A /* KOGPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTView.swift; sourceTree = "<group>"; };
@@ -171,8 +173,9 @@
 			children = (
 				C5F4092A299379CB001D5096 /* KarloView.swift */,
 				C5F40928299376B2001D5096 /* KarloModel.swift */,
-				C5B05F7929AF755E009B21B4 /* KarloParamView.swift */,
 				C5107CFA29B1916D0062B210 /* KarloParam.swift */,
+				C5B05F7929AF755E009B21B4 /* KarloParamView.swift */,
+				C5107D0229B5E3800062B210 /* DrawingView.swift */,
 			);
 			path = Karlo;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				C5B0F862299B8D3D0043EA51 /* KogptParamView.swift in Sources */,
 				C5915C5A2992841C00BE749A /* KOGPTModel.swift in Sources */,
 				C5B0F85E299B8C380043EA51 /* KogptParam.swift in Sources */,
+				C5107D0329B5E3800062B210 /* DrawingView.swift in Sources */,
 				C55F82E029A704E900D440A4 /* imsitooltipview.swift in Sources */,
 				C5AAB523298E5A78003C8997 /* APIKEY.swift in Sources */,
 				C5AAB517298E5908003C8997 /* ContentView.swift in Sources */,

@@ -55,8 +55,8 @@ struct KOGPTView: View {
     }
 }
 
-//struct KOGPTView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        KOGPTView()
-//    }
-//}
+struct KOGPTView_Previews: PreviewProvider {
+    static var previews: some View {
+        KOGPTView()
+    }
+}
