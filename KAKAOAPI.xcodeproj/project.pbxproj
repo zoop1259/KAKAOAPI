@@ -20,6 +20,7 @@
 		C517E63F298F440C0048C920 /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = C517E63E298F440C0048C920 /* KakaoSDKTemplate */; };
 		C517E641298F440C0048C920 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = C517E640298F440C0048C920 /* KakaoSDKUser */; };
 		C517E644298F44240048C920 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = C517E643298F44230048C920 /* SwiftyJSON */; };
+		C52C4B7229B6FD7900454CB1 /* MyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52C4B7129B6FD7900454CB1 /* MyButtonStyle.swift */; };
 		C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C553D39A29A8BFF400664095 /* DotLoadingView.swift */; };
 		C55F82E029A704E900D440A4 /* imsitooltipview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55F82DF29A704E900D440A4 /* imsitooltipview.swift */; };
 		C55F82E329A7050D00D440A4 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = C55F82E229A7050D00D440A4 /* SwiftUITooltip */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		C5107CFA29B1916D0062B210 /* KarloParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarloParam.swift; sourceTree = "<group>"; };
 		C5107D0229B5E3800062B210 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		C52C4B7129B6FD7900454CB1 /* MyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonStyle.swift; sourceTree = "<group>"; };
 		C553D39A29A8BFF400664095 /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
 		C55F82DF29A704E900D440A4 /* imsitooltipview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imsitooltipview.swift; sourceTree = "<group>"; };
 		C5915C57299282C900BE749A /* KOGPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				C55F82DF29A704E900D440A4 /* imsitooltipview.swift */,
 				C553D39A29A8BFF400664095 /* DotLoadingView.swift */,
+				C52C4B7129B6FD7900454CB1 /* MyButtonStyle.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				C5B0F85C299B6FD70043EA51 /* APIGeneric.swift in Sources */,
 				C5107CFB29B1916D0062B210 /* KarloParam.swift in Sources */,
 				C5AAB527298E5AC3003C8997 /* KOGPTAPI.swift in Sources */,
+				C52C4B7229B6FD7900454CB1 /* MyButtonStyle.swift in Sources */,
 				C5B0F859299A81340043EA51 /* NaverAPI.swift in Sources */,
 				C5B0F862299B8D3D0043EA51 /* KogptParamView.swift in Sources */,
 				C5915C5A2992841C00BE749A /* KOGPTModel.swift in Sources */,
