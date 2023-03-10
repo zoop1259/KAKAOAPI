@@ -56,6 +56,7 @@ class KOGPTAPI: ObservableObject {
     @Published var kogptModel: [KOGPTModel] = []
     
     
+    
 //    func kogpt_api(prompt: String, max_tokens: Int = 50, temperature: Float = 1.0, top_p: Float = 1.0, n: Int = 5) {
     func kogpt_api(prompt: String, max_tokens: Int, temperature: Double, top_p: Double, n: Int) {
         print("https://api.kakaobrain.com/v1/inference/kogpt/generation", prompt)
@@ -95,6 +96,39 @@ class KOGPTAPI: ObservableObject {
 //                self.kogptModel.append(value)
                 print(self.kogptModel)
                 
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    //MVVM패턴 사용하면?
+    func kogptMVVMAPI(with paramModel: KogptParamModel) {
+        print("https://api.kakaobrain.com/v1/inference/kogpt/generation", paramModel.prompt)
+        
+        let apiKey = Bundle.main.apiKey
+        
+        let parameters:[String: Any] = [
+            "prompt": paramModel.prompt,
+            "max_tokens": paramModel.max_tokens,
+            "temperature": paramModel.temperature,
+            "top_p": paramModel.top_p,
+            "n": paramModel.n
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "KakaoAK " + apiKey,
+            "Content-Type": "application/json"
+        ]
+        
+        AF.request("https://api.kakaobrain.com/v1/inference/kogpt/generation",
+                   method: .post,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: headers).responseDecodable(of: KOGPTModel.self) { response in
+            switch response.result {
+            case .success(let value):
+                print("이렇게 수정된건 호출되면?  \(self.kogptModel)")
             case .failure(let error):
                 print(error)
             }

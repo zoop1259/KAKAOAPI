@@ -14,12 +14,8 @@ struct KarloView: View {
     @State private var popupPresented: Bool = false
     //StateObject를 사용하지 않으면 toggle을 false한상태에서 다시 뷰를 호출하면 true로 되어버림.
     @StateObject var karloParam = KarloParam()
-    
-    @State private var fileManager = FileManager.default
-    @State private var documentsDirectory: URL? = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-    @State private var fileList = [URL]()
-    
     @StateObject var myFileManager = MyFileManager()
+
     
     var body: some View {
         //자동줄바꿈은 axis: .vertical을 쓰면된다...
@@ -93,9 +89,9 @@ struct KarloView: View {
                 
                 ScrollView(.horizontal) {
                     LazyHStack {
-                        //                ForEach(fileList, id: \.self) { fileURL in
                         ForEach(myFileManager.fileList, id: \.self) { fileURL in
                             if let image = UIImage(contentsOfFile: fileURL.path) {
+                                
                                 Image(uiImage: image)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -125,39 +121,6 @@ struct KarloView: View {
             }
         }
     }
-    
-    func fetchFiles() {
-        do {
-            guard let documentsDirectory = documentsDirectory else {
-                fatalError("Documents directory not found")
-            }
-            let contents = try fileManager.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil)
-            fileList = contents.filter { $0.pathExtension == "png" }
-        } catch {
-            print("Unable to fetch files: \(error)")
-        }
-    }
-    
-    func saveImage() {
-        let randomInt = Int.random(in: 100000..<9999999999)
-        let imageName = "image\(randomInt)"
-        let image = karloAPI.image
-        guard let documentsDirectory = documentsDirectory else {
-            fatalError("Documents directory not found")
-        }
-        let fileURL = documentsDirectory.appendingPathComponent(imageName).appendingPathExtension("png")
-        if let imageData = image?.pngData() {
-            do {
-                let permissions = [FileAttributeKey : Any]()
-                try FileManager.default.createDirectory(at: documentsDirectory, withIntermediateDirectories: true, attributes: permissions)
-                try imageData.write(to: fileURL)
-                fileList.append(fileURL)
-                fetchFiles()
-            } catch {
-                print("이미지 저장중 에러 발생: \(error)")
-            }
-        }
-    }
 }
 
 struct KarloView_Previews: PreviewProvider {
@@ -166,3 +129,59 @@ struct KarloView_Previews: PreviewProvider {
     }
 }
 
+/*
+ ScrollView(.horizontal) {
+     LazyHStack {
+         ForEach(myFileManager.fileList, id: \.self) { fileURL in
+             if let image = UIImage(contentsOfFile: fileURL.path) {
+                 NavigationLink(destination: FileDetailView(fileURL: fileURL)) {
+                     Image(uiImage: image)
+                         .resizable()
+                         .aspectRatio(contentMode: .fit)
+                         .frame(width: 100, height: 100)
+                         .cornerRadius(10)
+                 }
+             }
+         }
+     }
+     .border(.red, width: 5)
+ }
+ 
+ struct FileDetailView: View {
+     let fileURL: URL
+     
+     var body: some View {
+         Text("File Detail View for \(fileURL.lastPathComponent)")
+     }
+ }
+ 
+ 
+ ---
+ 
+ struct ContentView: View {
+     @State var selectedFileURL: URL? = nil
+     
+     var body: some View {
+         ScrollView(.horizontal) {
+             LazyHStack {
+                 ForEach(myFileManager.fileList, id: \.self) { fileURL in
+                     if let image = UIImage(contentsOfFile: fileURL.path) {
+                         Image(uiImage: image)
+                             .resizable()
+                             .aspectRatio(contentMode: .fit)
+                             .frame(width: 100, height: 100)
+                             .cornerRadius(10)
+                             .onTapGesture {
+                                 selectedFileURL = fileURL
+                             }
+                     }
+                 }
+             }
+             .border(.red, width: 5)
+         }
+         .sheet(item: $selectedFileURL) { fileURL in
+             FileDetailView(fileURL: fileURL)
+         }
+     }
+ }
+ */

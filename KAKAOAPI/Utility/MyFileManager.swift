@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Photos
 
 final class MyFileManager: ObservableObject {
     
@@ -45,5 +46,7 @@ final class MyFileManager: ObservableObject {
             }
         }
     }
+    
+    
     
 }

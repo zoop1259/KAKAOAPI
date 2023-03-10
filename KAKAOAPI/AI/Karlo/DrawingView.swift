@@ -6,20 +6,29 @@
 //
 
 import SwiftUI
+import Photos
 
-struct DrawingView: View {
-    @State private var fileManager = FileManager.default
-    @State private var documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? nil
-    @State private var imageList = [URL]()
+///이미지를 선택했을때 나타나는 View
+/**
     
+ 
+ 
+ */
+struct DrawingView: View {
+    
+    let karloModel : KarloModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Text("이미지")
+        
+        let _ = print(karloModel.images)
+        
     }
 }
 
-struct DrawingView_Previews: PreviewProvider {
-    static var previews: some View {
-        DrawingView()
-    }
-}
+//struct DrawingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DrawingView()
+//    }
+//}

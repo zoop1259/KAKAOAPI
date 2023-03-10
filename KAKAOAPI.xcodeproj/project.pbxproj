@@ -22,6 +22,7 @@
 		C517E644298F44240048C920 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = C517E643298F44230048C920 /* SwiftyJSON */; };
 		C52C4B7229B6FD7900454CB1 /* MyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52C4B7129B6FD7900454CB1 /* MyButtonStyle.swift */; };
 		C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C553D39A29A8BFF400664095 /* DotLoadingView.swift */; };
+		C56108BF29BAF18800777D3E /* KogptParamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56108BE29BAF18800777D3E /* KogptParamModel.swift */; };
 		C56D6BD129B9B0DD002C24D1 /* MyFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D6BD029B9B0DD002C24D1 /* MyFileManager.swift */; };
 		C5915C58299282C900BE749A /* KOGPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5915C57299282C900BE749A /* KOGPTView.swift */; };
 		C5915C5A2992841C00BE749A /* KOGPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5915C592992841B00BE749A /* KOGPTModel.swift */; };
@@ -47,6 +48,7 @@
 		C5107D0229B5E3800062B210 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		C52C4B7129B6FD7900454CB1 /* MyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonStyle.swift; sourceTree = "<group>"; };
 		C553D39A29A8BFF400664095 /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
+		C56108BE29BAF18800777D3E /* KogptParamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KogptParamModel.swift; sourceTree = "<group>"; };
 		C56D6BD029B9B0DD002C24D1 /* MyFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFileManager.swift; sourceTree = "<group>"; };
 		C5915C57299282C900BE749A /* KOGPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTView.swift; sourceTree = "<group>"; };
 		C5915C592992841B00BE749A /* KOGPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOGPTModel.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				C5915C57299282C900BE749A /* KOGPTView.swift */,
 				C5915C592992841B00BE749A /* KOGPTModel.swift */,
 				C5B0F85D299B8C380043EA51 /* KogptParam.swift */,
+				C56108BE29BAF18800777D3E /* KogptParamModel.swift */,
 				C5B0F861299B8D3D0043EA51 /* KogptParamView.swift */,
 			);
 			path = KOGPT;
@@ -309,6 +312,7 @@
 				C553D39B29A8BFF400664095 /* DotLoadingView.swift in Sources */,
 				C5AAB515298E5908003C8997 /* KAKAOAPIApp.swift in Sources */,
 				C5B2DC992993C23200D85291 /* NaverModel.swift in Sources */,
+				C56108BF29BAF18800777D3E /* KogptParamModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

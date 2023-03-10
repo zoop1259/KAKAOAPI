@@ -66,6 +66,7 @@ class KarloAPI: ObservableObject {
         if karloParam.translate {
             naverAPICall(text) { str in
                 self.karlo_api(text: str) { image in
+                    
                     DispatchQueue.main.async {
                         self.image = image
                     }
