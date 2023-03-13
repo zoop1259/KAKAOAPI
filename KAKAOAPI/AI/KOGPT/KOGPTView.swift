@@ -31,6 +31,14 @@ struct KOGPTView: View {
                     .padding( .leading, 10)
                 Button(action: {
                     kogptAPI.kogpt_api(prompt: prompt, max_tokens: kogptParam.max_tokens, temperature: kogptParam.temperature, top_p: kogptParam.top_p, n: kogptParam.n)
+                    //mvvm해볼려고한거지만 우선 m를 직접사용.
+                    let model = KogptParamModel(prompt: kogptParam.prompt,
+                                                max_tokens: kogptParam.max_tokens,
+                                                temperature: kogptParam.temperature,
+                                                top_p: kogptParam.top_p,
+                                                n: kogptParam.n)
+                    kogptAPI.kogptMVVMAPI(with: model)
+                    
                 }) {
                     Image(systemName: "checkmark")
                 }

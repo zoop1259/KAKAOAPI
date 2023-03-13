@@ -7,10 +7,18 @@
 
 import Foundation
 
+//struct KogptParamModel {
+//    var prompt: String
+//    var max_tokens: Int
+//    var temperature: Double
+//    var top_p: Double
+//    var n: Int
+//}
+
 struct KogptParamModel {
-    var prompt: String
-    var max_tokens: Int
-    var temperature: Double
-    var top_p: Double
-    var n: Int
+    var prompt: String = "hi"
+    var max_tokens: Int = 10
+    var temperature: Double = 0.7
+    var top_p: Double = 0.7
+    var n: Int = 5
 }
