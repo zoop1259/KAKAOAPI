@@ -14,6 +14,9 @@ struct DotLoadingView: View {
     @State private var showCircle3 = false
     
     var body: some View {
+        
+        Spacer()
+        
         HStack {
             Circle()
                 .opacity(showCircle1 ? 1 : 0)
@@ -24,6 +27,8 @@ struct DotLoadingView: View {
         }
         .foregroundColor(.gray.opacity(0.5))
         .onAppear { performAnimation() }
+        
+        Spacer()
     }
     
     //0.4초마다 하나씩...
