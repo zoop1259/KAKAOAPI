@@ -15,15 +15,29 @@ import Photos
  
  */
 struct DrawingView: View {
-    
-    let karloModel : KarloModel
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var fileManager = MyFileManager()
+    let fileURL: URL
     
     var body: some View {
-        
-        Text("이미지")
-        
-        let _ = print(karloModel.images)
-        
+        NavigationView {
+            if let image = UIImage(contentsOfFile: fileURL.path) {
+                let uiImage = image.withRenderingMode(.alwaysOriginal)
+                let cgImage = uiImage.cgImage!
+                Image(cgImage, scale: uiImage.scale, label: Text(fileURL.lastPathComponent))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Text("이미지 로드 실패")
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            fileManager.deleteImage(at: fileURL)
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            Text("이미지 삭제")
+        })
     }
 }
 

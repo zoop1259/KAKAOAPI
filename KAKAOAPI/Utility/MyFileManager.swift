@@ -47,6 +47,15 @@ final class MyFileManager: ObservableObject {
         }
     }
     
+    func deleteImage(at url: URL) {
+        do {
+            try FileManager.default.removeItem(at: url)
+            fileList = fileList.filter { $0 != url }
+            self.fetchFiles()
+        } catch {
+            print("이미지 삭제중 에러 발생: \(error)")
+        }
+    }
     
     
 }

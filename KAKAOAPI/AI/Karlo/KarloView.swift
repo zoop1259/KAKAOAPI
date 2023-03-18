@@ -85,22 +85,22 @@ struct KarloView: View {
                             .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.width - 20, alignment: .center)
                     }
                 }
-                .border(.blue, width: 5)
+                .padding()
                 
                 ScrollView(.horizontal) {
                     LazyHStack {
                         ForEach(myFileManager.fileList, id: \.self) { fileURL in
                             if let image = UIImage(contentsOfFile: fileURL.path) {
-                                
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 100, height: 100)
-                                    .cornerRadius(10)
+                                NavigationLink(destination: DrawingView(fileURL: fileURL)) {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(10)
+                                }
                             }
                         }
                     }
-                    .border(.red, width: 5)
                 }
                 .frame(width: UIScreen.main.bounds.width, height: 100)
                 .padding(.leading, 10)
